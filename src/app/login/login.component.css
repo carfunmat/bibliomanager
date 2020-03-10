@@ -23,7 +23,7 @@
     width: 100%;
     height: auto;
     opacity: 0.4;
-    filter: blur(3px);
+    filter: blur(5px);
 }
 
 #bienvenida {

@@ -1,6 +1,8 @@
 <app-header></app-header>
-
-<div *ngIf="auth.user">
+<div id="imagen">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Home_.png" class="img-fluid" alt="Imagen" />
+</div>
+<div id="parrafoPrincipal" *ngIf="auth.user">
     <h2>CONSOLA DE ADMINISTRACIÓN BIBLIOMANAGER</h2>
     <h5>Navegue por las páginas del menú superior para administrar la información correspondiente </h5>
 </div>

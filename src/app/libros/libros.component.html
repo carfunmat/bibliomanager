@@ -1,38 +1,44 @@
 <app-header></app-header>
+<div id="imagen">
+    <img src="https://live.staticflickr.com/6071/6051338334_581634c069_b.jpg" class="img-fluid" alt="Imagen" />
+</div>
+<div id="main">
+    <h1>Libros</h1>
+    <table class="table">
+        <tr *ngFor="let libro of libros">
+            <td>{{libro.data.titulo}}</td>
+            <td>{{libro.data.autor}}</td>
+            <td>{{libro.data.usuario}}</td>
+            <div>
+                <button id="botonEditar" (click)="editaLibro(libro.id)" class="btn btn-primary">Editar libro</button>
+                <button id="botonEliminar" (click)="borraLibro(libro.id)" class="btn btn-danger">Eliminar libro</button>
+            </div>
+        </tr>
+    </table>
 
-<h1>Libros</h1>
-
-<table class="table">
-    <tr *ngFor="let libro of libros">
-        <td>{{libro.data.titulo}}</td>
-        <td>{{libro.data.autor}}</td>
-        <td>{{libro.data.usuario}}</td>
-        <div>
-            <button id="botonEditar" (click)="editaLibro(libro.id)" class="btn btn-primary">Editar libro</button>
-            <button id="botonEliminar" (click)="borraLibro(libro.id)" class="btn btn-danger">Eliminar libro</button>
-        </div>
-    </tr>
-</table>
-
-<button id="botonAgregar" (click)="agregaVisible('visible')">Agregar nuevo libro</button>
+    <button id="botonAgregar" (click)="agregaVisible('visible')">Agregar nuevo libro</button>
 
 
-<form id="formularioLibro" (ngSubmit)="nuevoLibro(nuevoLibroForm.value)" [formGroup]="nuevoLibroForm">
-    <input type="hidden" formControlName="id">
+    <form id="formularioLibro" (ngSubmit)="nuevoLibro(nuevoLibroForm.value)" [formGroup]="nuevoLibroForm">
+        <input type="hidden" formControlName="id">
 
-    <label for="titulo">Título</label>
-    <input type="text" formControlName="titulo">
+        <label for="titulo">Título</label>
+        <input type="text" formControlName="titulo">
+        <br/>
 
-    <label for="autor">Autor</label>
-    <input type="text" formControlName="autor">
+        <label for="autor">Autor</label>
+        <input type="text" formControlName="autor">
+        <br/>
 
-    <label for="usuario">Usuario</label>
-    <input type="text" formControlName="usuario">
+        <label for="usuario">Usuario</label>
+        <input type="text" formControlName="usuario">
+        <br/>
 
-    <input id="botonInput" type="submit" [disabled]="!nuevoLibroForm.valid" value="Agregar">
-    <input id="botonInputCancelar" type="button" (click)="agregaVisible('hidden')" value="Cancelar">
-    <!--<input id="botonCancelar" type="submit" (click)="agregaVisible('hidden')">Cancelar</button>-->
-</form>
+        <input id="botonInput" type="submit" [disabled]="!nuevoLibroForm.valid" value="Agregar">
+        <input id="botonInputCancelar" type="button" (click)="agregaVisible('hidden')" value="Cancelar">
+        <!--<input id="botonCancelar" type="submit" (click)="agregaVisible('hidden')">Cancelar</button>-->
+    </form>
+</div>
 
 <app-footer></app-footer>
 <!--<router-outlet></router-outlet>-->
