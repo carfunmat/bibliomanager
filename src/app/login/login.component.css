@@ -5,3 +5,28 @@
     float: none;
     margin: auto;
 }
+
+#imagen {
+    position: relative;
+}
+
+#principal {
+    padding: 200px;
+    position: relative;
+    z-index: 2;
+}
+
+#imagen img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0.4;
+    filter: blur(3px);
+}
+
+#bienvenida {
+    margin: 5% 10%;
+    text-align: center;
+}

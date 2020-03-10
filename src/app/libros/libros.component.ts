@@ -54,6 +54,7 @@ export class LibrosComponent implements OnInit {
       document.getElementById('botonAgregar').style.visibility = 'hidden';
     } else {
       document.getElementById('botonAgregar').style.visibility = 'visible';
+      (<HTMLInputElement>document.getElementById('botonInput')).value = "Agregar";
     }
 
   }
@@ -98,6 +99,7 @@ export class LibrosComponent implements OnInit {
     }
 
     this.agregaVisible('hidden');
+    (<HTMLInputElement>document.getElementById('botonInput')).value = "Editar";
   }
 
   public editaLibro(documentId) {
@@ -113,6 +115,7 @@ export class LibrosComponent implements OnInit {
       editSubscribe.unsubscribe();
     });
     this.agregaVisible('visible');
+    (<HTMLInputElement>document.getElementById('botonInput')).value = "Editar";
   }
 
   public borraLibro(documentId) {

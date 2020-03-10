@@ -1,2 +1,8 @@
 <app-header></app-header>
-<h1>HOME</h1>
+
+<div *ngIf="auth.user">
+    <h2>CONSOLA DE ADMINISTRACIÓN BIBLIOMANAGER</h2>
+    <h5>Navegue por las páginas del menú superior para administrar la información correspondiente </h5>
+</div>
+
+<app-footer></app-footer>

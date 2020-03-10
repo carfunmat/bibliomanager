@@ -1,13 +1,19 @@
+<app-header></app-header>
 <h1>Usuarios</h1>
-<div *ngFor="let usuario of usuarios">
-    <p>{{usuario.data.nombre}}</p>
-    <div>
-        <button (click)="editaUsuario(usuario.id)">Editar</button>
-        <button (click)="borraUsuario(usuario.id)">Eliminar</button>
-    </div>
-</div>
 
-<form (ngSubmit)="nuevoUsuario(nuevoUsuarioForm.value)" [formGroup]="nuevoUsuarioForm">
+<table class="table">
+    <tr *ngFor="let usuario of usuarios">
+        <td>{{usuario.data.nombre}}</td>
+        <div>
+            <button (click)="editaUsuario(usuario.id)" class="btn btn-primary">Editar usuario</button>
+            <button (click)="borraUsuario(usuario.id)" class="btn btn-danger">Eliminar usuario</button>
+        </div>
+    </tr>
+</table>
+
+<button id="botonAgregar" (click)="agregaVisible('visible')">Agregar nuevo usuario</button>
+
+<form id="formularioUsuario" (ngSubmit)="nuevoUsuario(nuevoUsuarioForm.value)" [formGroup]="nuevoUsuarioForm">
     <input type="hidden" formControlName="id">
 
     <label for="nombre">Nombre</label>
@@ -16,6 +22,9 @@
     <label for="password">Contraseña</label>
     <input type="password" formControlName="password">
 
-    <input type="submit" [disabled]="!nuevoUsuarioForm.valid" value="Agregar">
+    <input id="botonInput" type="submit" [disabled]="!nuevoUsuarioForm.valid" value="Agregar">
+    <input id="botonInputCancelar" type="button" (click)="agregaVisible('hidden')" value="Cancelar">
 </form>
+
+<app-footer></app-footer>
 <router-outlet></router-outlet>

@@ -1,26 +1,39 @@
-<nav *ngIf="auth.user | async as user; else login" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="" routerLinkActive="active">Home</a>
-    <a class="navbar-brand" routerLink="/libros" routerLinkActive="active">Libros</a>
-    <a class="navbar-brand" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
+<div id="imagen">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Biblioteca_Casa_de_Colón_Nacho_González.JPG" class="img-fluid" alt="Imagen" />
+</div>
+<div id="principal">
+    
+    <nav *ngIf="auth.user | async as user; else login" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Home</a>
+        <a class="navbar-brand" routerLink="/libros" routerLinkActive="active">Libros</a>
+        <a class="navbar-brand" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
 
-    <div class="userDiv">
-        {{user.displayName}}
-        <button (click)="auth.logout()">Logout</button>
-    </div>
-</nav>
+        <div class="userDiv">
+            {{user.displayName}}
+            <button (click)="auth.logout()" routerLink="">Logout</button>
+        </div>
+    </nav>
 
-<ng-template #login>
-    <div>
-        <form class="form">
-            <input type="text" name="email" placeholder="Escribe tu email" [(ngModel)]="auth.email" />
-            <br /><br />
-            <input type="password" name="pass" placeholder="Escribe tu contraseña" [(ngModel)]="auth.pass" />
-            <br /><br />
-            <button (click)="auth.login()">Email Login</button>
-            <br /><br />
-            <button (click)="auth.glogin()" routerLink="" routerLinkActive="active">Google Login</button>
-        </form>
-    </div>
-</ng-template>
+    <ng-template #login id="loginDiv">
+        <div id="bienvenida">
+            <h2>BIENVENIDO A BIBLIOMANAGER</h2>
+            <h4>Inicie sesión para acceder a la administración de usuarios y libros</h4>
+            <br>
+            <form class="form">
+                <!--
+                <input type="text" name="email" placeholder="Escribe tu email" [(ngModel)]="auth.email" />
+                <br /><br />
+                <input type="password" name="pass" placeholder="Escribe tu contraseña" [(ngModel)]="auth.pass" />
+                <br /><br />
+                <button (click)="auth.login()">Email Login</button>
+                <br /><br />
+                
+                <button (click)="auth.glogin()" routerLink="/home" routerLinkActive="active">LOGIN</button>
+                -->
+                <button (click)="auth.glogin()" class="btn btn-secondary">INICIAR SESIÓN</button>
+            </form>
+        </div>
+    </ng-template>
+</div>
 
 <!--<router-outlet></router-outlet>-->

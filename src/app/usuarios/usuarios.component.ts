@@ -40,6 +40,19 @@ export class UsuariosComponent implements OnInit {
         )
       }
     )
+
+    this.agregaVisible('hidden');
+  }
+
+  public agregaVisible(v){
+    document.getElementById('formularioUsuario').style.visibility = v;
+    if(v == 'visible'){
+      document.getElementById('botonAgregar').style.visibility = 'hidden';
+    } else {
+      document.getElementById('botonAgregar').style.visibility = 'visible';
+      (<HTMLInputElement>document.getElementById('botonInput')).value = "Agregar";
+    }
+
   }
 
   public nuevoUsuario(form, documentId = this.documentId) {
@@ -76,6 +89,9 @@ export class UsuariosComponent implements OnInit {
         console.log(error);
       });
     }
+
+    this.agregaVisible('hidden');
+    (<HTMLInputElement>document.getElementById('botonInput')).value = "Editar";
   }
 
   public editaUsuario(documentId) {
@@ -89,6 +105,8 @@ export class UsuariosComponent implements OnInit {
       });
       editSubscribe.unsubscribe();
     });
+    this.agregaVisible('visible');
+    (<HTMLInputElement>document.getElementById('botonInput')).value = "Editar";
   }
 
   public borraUsuario(documentId) {

@@ -7,6 +7,7 @@
 }
 
 .userDiv {
+    margin-left: 45%;
     padding: 10px;
-    float: right;
+    text-align: right;
 }

@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+/*@import '../node_modules/@ng-bootstrap/dist/css/bootstrap.css';*/
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+/*
+body {
+    /*
+    display: flex;
+    flex-direction: column;
+    
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/c/cd/Biblioteca_Casa_de_Colón_Nacho_González.JPG");
+    background-repeat: no-repeat;
+    /*background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.4;
+    background-size: 100% 100%;
+}
+*/

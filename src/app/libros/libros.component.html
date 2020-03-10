@@ -16,6 +16,7 @@
 
 <button id="botonAgregar" (click)="agregaVisible('visible')">Agregar nuevo libro</button>
 
+
 <form id="formularioLibro" (ngSubmit)="nuevoLibro(nuevoLibroForm.value)" [formGroup]="nuevoLibroForm">
     <input type="hidden" formControlName="id">
 
@@ -29,7 +30,9 @@
     <input type="text" formControlName="usuario">
 
     <input id="botonInput" type="submit" [disabled]="!nuevoLibroForm.valid" value="Agregar">
+    <input id="botonInputCancelar" type="button" (click)="agregaVisible('hidden')" value="Cancelar">
     <!--<input id="botonCancelar" type="submit" (click)="agregaVisible('hidden')">Cancelar</button>-->
 </form>
 
+<app-footer></app-footer>
 <!--<router-outlet></router-outlet>-->
