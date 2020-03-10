@@ -1,0 +1,26 @@
+<nav *ngIf="auth.user | async as user; else login" class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="" routerLinkActive="active">Home</a>
+    <a class="navbar-brand" routerLink="/libros" routerLinkActive="active">Libros</a>
+    <a class="navbar-brand" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
+
+    <div class="userDiv">
+        {{user.displayName}}
+        <button (click)="auth.logout()">Logout</button>
+    </div>
+</nav>
+
+<ng-template #login>
+    <div>
+        <form class="form">
+            <input type="text" name="email" placeholder="Escribe tu email" [(ngModel)]="auth.email" />
+            <br /><br />
+            <input type="password" name="pass" placeholder="Escribe tu contraseña" [(ngModel)]="auth.pass" />
+            <br /><br />
+            <button (click)="auth.login()">Email Login</button>
+            <br /><br />
+            <button (click)="auth.glogin()" routerLink="" routerLinkActive="active">Google Login</button>
+        </form>
+    </div>
+</ng-template>
+
+<!--<router-outlet></router-outlet>-->

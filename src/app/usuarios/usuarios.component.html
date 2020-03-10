@@ -1,0 +1,21 @@
+<h1>Usuarios</h1>
+<div *ngFor="let usuario of usuarios">
+    <p>{{usuario.data.nombre}}</p>
+    <div>
+        <button (click)="editaUsuario(usuario.id)">Editar</button>
+        <button (click)="borraUsuario(usuario.id)">Eliminar</button>
+    </div>
+</div>
+
+<form (ngSubmit)="nuevoUsuario(nuevoUsuarioForm.value)" [formGroup]="nuevoUsuarioForm">
+    <input type="hidden" formControlName="id">
+
+    <label for="nombre">Nombre</label>
+    <input type="text" formControlName="nombre">
+
+    <label for="password">Contraseña</label>
+    <input type="password" formControlName="password">
+
+    <input type="submit" [disabled]="!nuevoUsuarioForm.valid" value="Agregar">
+</form>
+<router-outlet></router-outlet>

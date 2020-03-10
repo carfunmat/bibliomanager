@@ -1,0 +1,14 @@
+<nav *ngIf="auth.user | async as user; else login" class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="" routerLinkActive="active">Home</a>
+    <a class="navbar-brand" routerLink="/libros" routerLinkActive="active">Libros</a>
+    <a class="navbar-brand" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
+
+    <div class="userDiv">
+        {{user.email}}
+        <button (click)="auth.logout()"></button>
+    </div>
+</nav>
+
+<section>
+    <router-outlet></router-outlet>
+</section>
