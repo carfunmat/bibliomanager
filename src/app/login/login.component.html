@@ -2,8 +2,11 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Biblioteca_Casa_de_Colón_Nacho_González.JPG" class="img-fluid" alt="Imagen" />
 </div>
 
-<div  id="principal">
-    <div *ngIf="auth.user | async as user; else login"></div>
+<div id="principal">
+    <div *ngIf="auth.user | async as user; else login">
+        <p>Has iniciado sesión como {{user.displayName}}</p>
+        <button class="btn btn-info" [routerLink]="['home']">Acceder a la consola</button>
+    </div>
 
     <ng-template #login id="loginDiv">
         <div id="bienvenida">
