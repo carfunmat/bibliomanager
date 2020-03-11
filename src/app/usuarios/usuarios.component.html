@@ -8,6 +8,7 @@
     <table class="table">
         <tr *ngFor="let usuario of usuarios">
             <td>{{usuario.data.nombre}}</td>
+            <td>{{usuario.data.libro}}</td>
             <div>
                 <button (click)="editaUsuario(usuario.id)" class="btn btn-primary">Editar usuario</button>
                 <button (click)="borraUsuario(usuario.id)" class="btn btn-danger">Eliminar usuario</button>
@@ -25,6 +26,11 @@
 
         <label for="password">Contraseña</label>
         <input type="password" formControlName="password">
+
+        <label for="libro">Libro</label>
+        <select id="libro" formControlName="libro">
+            <option *ngFor="let libro of libros" value="{{libro.data.titulo}}">{{libro.data.titulo}}</option>
+        </select>
 
         <input id="botonInput" type="submit" [disabled]="!nuevoUsuarioForm.valid" value="Agregar">
         <input id="botonInputCancelar" type="button" (click)="agregaVisible('hidden')" value="Cancelar">

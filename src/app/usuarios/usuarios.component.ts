@@ -10,11 +10,13 @@ import { FirestoreService } from '../services/firestore/firestore.service';
 export class UsuariosComponent implements OnInit {
 
   public usuarios = [];
+  public libros = [];
   public documentId = null;
   public currentStatus = 1;
   public nuevoUsuarioForm = new FormGroup({
     nombre: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
+    libro: new FormControl(''),
     id: new FormControl('')
   });
   
@@ -22,7 +24,8 @@ export class UsuariosComponent implements OnInit {
     this.nuevoUsuarioForm.setValue({
       id: '',
       nombre: '',
-      password: ''
+      password: '',
+      libro: ''
     });
    }
 
@@ -39,7 +42,21 @@ export class UsuariosComponent implements OnInit {
           }
         )
       }
-    )
+    );
+
+    this.firestoreService.getTodosLibros().subscribe(
+      (librosSnapshot) => {
+        this.libros = [];
+        librosSnapshot.forEach(
+          (librosData: any) => {
+            this.libros.push({
+              id: librosData.payload.doc.id,
+              data: librosData.payload.doc.data(),
+            })
+          }
+        )
+      }
+    );
 
     this.agregaVisible('hidden');
   }
@@ -60,14 +77,16 @@ export class UsuariosComponent implements OnInit {
     if (this.currentStatus == 1) {
       let data = {
         nombre: form.nombre,
-        password: form.password
+        password: form.password,
+        libro: form.libro
       }
       this.firestoreService.creaUsuarioBiblioteca(data).then(() => {
         console.log('Documento creado exitosamente!');
         this.nuevoUsuarioForm.setValue({
           id: '',
           nombre: '',
-          password: ''
+          password: '',
+          libro: ''
         });
       }, (error) => {
         console.error(error);
@@ -75,14 +94,16 @@ export class UsuariosComponent implements OnInit {
     } else {
       let data = {
         nombre: form.nombre,
-        password: form.password
+        password: form.password,
+        libro: form.libro
       }
       this.firestoreService.actualizaUsuario(documentId, data).then(() => {
         this.currentStatus = 1;
         this.nuevoUsuarioForm.setValue({
           id: '',
           nombre: '',
-          password: ''
+          password: '',
+          libro: ''
         });
         console.log('Documento editado exitosamente');
       }, (error) => {
@@ -101,7 +122,8 @@ export class UsuariosComponent implements OnInit {
       this.nuevoUsuarioForm.setValue({
         id: documentId,
         nombre: usuario.payload.data()['nombre'],
-        password: usuario.payload.data()['password']
+        password: usuario.payload.data()['password'],
+        libro: usuario.payload.data()['libro']
       });
       editSubscribe.unsubscribe();
     });

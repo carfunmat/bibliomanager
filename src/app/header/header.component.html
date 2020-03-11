@@ -4,11 +4,11 @@
     <a class="navbar-brand" routerLink="/usuarios" routerLinkActive="active">Usuarios</a>
 
     <div class="userDiv">
+        <img id="fotoPerfil" src="{{user.photoURL}}" alt="Imagen perfil">
         Ha iniciado sesión como: {{user.displayName}}
         <button (click)="auth.logout()" [routerLink]="['']">Cerrar sesión</button>
     </div>
 </nav>
 
-<section>
-    <router-outlet></router-outlet>
-</section>
+<router-outlet></router-outlet>
+

@@ -9,8 +9,6 @@ import { FirestoreService } from '../services/firestore/firestore.service';
 })
 export class LibrosComponent implements OnInit {
 
-  displayedColumns = ['id', 'titulo', 'autor'];
-
   public libros = [];
   public documentId = null;
   public currentStatus = 1;
@@ -56,7 +54,6 @@ export class LibrosComponent implements OnInit {
       document.getElementById('botonAgregar').style.visibility = 'visible';
       (<HTMLInputElement>document.getElementById('botonInput')).value = "Agregar";
     }
-
   }
 
   public nuevoLibro(form, documentId = this.documentId) {
