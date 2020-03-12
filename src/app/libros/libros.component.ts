@@ -26,7 +26,7 @@ export class LibrosComponent implements OnInit {
       autor: '',
       usuario: ''
     });
-   }
+  }
 
   ngOnInit() {
     this.firestoreService.getTodosLibros().subscribe(
@@ -46,9 +46,9 @@ export class LibrosComponent implements OnInit {
     this.agregaVisible('hidden');
   }
 
-  public agregaVisible(v){
+  public agregaVisible(v) {
     document.getElementById('formularioLibro').style.visibility = v;
-    if(v == 'visible'){
+    if (v == 'visible') {
       document.getElementById('botonAgregar').style.visibility = 'hidden';
     } else {
       document.getElementById('botonAgregar').style.visibility = 'visible';
@@ -116,11 +116,16 @@ export class LibrosComponent implements OnInit {
   }
 
   public borraLibro(documentId) {
-    this.firestoreService.eliminaLibro(documentId).then(() => {
-      console.log('Documento eliminado!');
-    }, (error) => {
-      console.error(error);
-    });
+    this.firestoreService.getLibro(documentId).subscribe((libro) => {
+      if (window.confirm("¿Está seguro de que desea eliminar a " + libro.payload.data()['titulo'] + "?")) {
+        this.firestoreService.eliminaLibro(documentId).then(() => {
+          console.log('Documento eliminado!');
+        }, (error) => {
+          console.error(error);
+        });
+      }
+    })
+
   }
 
 }

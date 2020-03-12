@@ -132,11 +132,17 @@ export class UsuariosComponent implements OnInit {
   }
 
   public borraUsuario(documentId) {
-    this.firestoreService.eliminaUsuario(documentId).then(() => {
-      console.log('Documento eliminado!');
-    }, (error) => {
-      console.error(error);
-    });
+    this.firestoreService.getUsuarioBiblioteca(documentId).subscribe((usu) => {
+      if(window.confirm("¿Está seguro de que desea eliminar a " + usu.payload.data()['nombre'] + "?")){
+        this.firestoreService.eliminaUsuario(documentId).then(() => {
+          console.log('Documento eliminado!');
+        }, (error) => {
+          console.error(error);
+        });
+      }
+    })
+    
   }
+    
 
 }
